@@ -127,7 +127,7 @@ public class MainActivity extends Activity {
 
         LinearLayout seg = new LinearLayout(this);
         seg.setOrientation(LinearLayout.HORIZONTAL);
-        seg.setPadding(dp(this, 2), dp(this, 2), dp(this, 2), dp(this, 2));
+        seg.setPadding(dp(this, 3), dp(this, 3), dp(this, 3), dp(this, 3));
         seg.setBackground(rrect(this, 0xFFE5E5EA, 10, 0));
         String[] names = {"最新", "免费", "好用", "全部", "收藏"};
         for (String n : names) {
@@ -137,7 +137,7 @@ public class MainActivity extends Activity {
             btn.setAllCaps(false);
             btn.setBackground(rrect(this, "最新".equals(n) ? 0xFFFFFFFF : 0x00000000, 8, 0));
             btn.setElevation("最新".equals(n) ? dp(this, 2) : 0);
-            btn.setPadding(0, dp(this, 2), 0, dp(this, 2));
+            btn.setPadding(0, dp(this, 7), 0, dp(this, 7));
             btn.setOnClickListener(v -> {
               try {
                 tab = n;
@@ -173,8 +173,7 @@ public class MainActivity extends Activity {
         alertLabel.setTextSize(13); alertLabel.setTextColor(0xFF3A3A3C);
         alertBox.addView(alertLabel);
         alertSwitch = new FrameLayout(this);
-        alertSwitch.setLayoutParams(new LinearLayout.LayoutParams(dp(this, 46), dp(this, 26)));
-        LinearLayout.LayoutParams swLp = new LinearLayout.LayoutParams(dp(this, 46), dp(this, 26));
+        LinearLayout.LayoutParams swLp = new LinearLayout.LayoutParams(dp(this, 40), dp(this, 13));
         swLp.setMargins(dp(this, 8), 0, 0, 0);
         alertSwitch.setLayoutParams(swLp);
         final FrameLayout sw = alertSwitch;
@@ -182,19 +181,19 @@ public class MainActivity extends Activity {
         track.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
         sw.addView(track);
         alertThumb = new View(this);
-        FrameLayout.LayoutParams thLp = new FrameLayout.LayoutParams(dp(this, 22), dp(this, 22));
+        FrameLayout.LayoutParams thLp = new FrameLayout.LayoutParams(dp(this, 11), dp(this, 11));
         thLp.gravity = Gravity.CENTER_VERTICAL;
-        thLp.setMargins(dp(this, 2), 0, 0, 0);
+        thLp.setMargins(dp(this, 1), 0, 0, 0);
         alertThumb.setLayoutParams(thLp);
         sw.addView(alertThumb);
         final boolean[] alertSt = {alertOn0};
         Runnable paintSw = () -> {
-            track.setBackground(rrect(this, alertSt[0] ? 0xFFAEAEB2 : 0xFFFFFFFF, 13, alertSt[0] ? 0 : 0xFFD1D1D6));
-            alertThumb.setBackground(rrect(this, 0xFFFFFFFF, 11, 0xFFD1D1D6));
+            track.setBackground(rrect(this, alertSt[0] ? 0xFFAEAEB2 : 0xFFFFFFFF, 7, alertSt[0] ? 0 : 0xFFD1D1D6));
+            alertThumb.setBackground(rrect(this, 0xFFFFFFFF, 5, 0xFFD1D1D6));
             FrameLayout.LayoutParams lp2 = (FrameLayout.LayoutParams) alertThumb.getLayoutParams();
             lp2.topMargin = 0; lp2.bottomMargin = 0;
-            if (alertSt[0]) { lp2.gravity = Gravity.CENTER_VERTICAL | Gravity.END; lp2.leftMargin = 0; lp2.rightMargin = dp(this, 2); }
-            else { lp2.gravity = Gravity.CENTER_VERTICAL | Gravity.START; lp2.leftMargin = dp(this, 2); lp2.rightMargin = 0; }
+            if (alertSt[0]) { lp2.gravity = Gravity.CENTER_VERTICAL | Gravity.END; lp2.leftMargin = 0; lp2.rightMargin = dp(this, 1); }
+            else { lp2.gravity = Gravity.CENTER_VERTICAL | Gravity.START; lp2.leftMargin = dp(this, 1); lp2.rightMargin = 0; }
             alertThumb.setLayoutParams(lp2);
         };
         paintSw.run();
